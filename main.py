@@ -2,6 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 import time
 import smtplib
+import matplotlib.pyplot as plt
+from datetime import datetime
 
 
 
@@ -20,6 +22,19 @@ def log_price(price):
     # Open the log file in append mode and write the price and timestamp
     with open(log_file, 'a') as file:
         file.write(f"{current_time} - {price}\n")
+
+
+def plot_graph(prices, timestamps):
+    plt.figure(figsize=(10, 6))
+    plt.plot(timestamps, prices, marker='o', linestyle='-')
+    plt.xlabel('Timestamp')
+    plt.ylabel('Price (INR)')
+    plt.title('Price History')
+    plt.xticks(rotation=45)
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig('price_history_graph.png')
+    plt.show()
 
 
 
@@ -78,13 +93,19 @@ def track_product_price(product_url, target_price):
     print("Product URL:", product_url)
     print("Target Price:", target_price)
 
+    prices = []
+    timestamps = []
+
     while True:
         cur_price = check_price(product_url)
         log_price(cur_price)  # Log the current price
+        prices.append(cur_price)
+        timestamps.append(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         print(f"Current price is {cur_price}")
         if cur_price <= target_price:
             print(f"It's time to buy the product! The current price is {cur_price}.")
             send_email_notification(target_price)  # Send email notification on price drop
+            plot_graph(prices, timestamps)  # Plot the price history graph
             break
         time.sleep(60)
 
