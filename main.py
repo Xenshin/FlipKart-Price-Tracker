@@ -121,18 +121,87 @@ def track_product_price(product_url, target_price):
             break
         time.sleep(60)
 
+
+def compare_prices(product_url, other_websites):
+    """Compare the price of the product on Flipkart with other websites.
+
+    Args:
+        product_url (str): The Flipkart product URL.
+        other_websites (dict): A dictionary containing other website URLs and XPath expressions for price extraction.
+
+    Returns:
+        dict: A dictionary containing the website names and their respective prices for the product.
+    """
+    price_comparison = {}
+
+    # Fetch Flipkart price
+    flipkart_price = check_price(product_url)
+    price_comparison["Flipkart"] = flipkart_price
+
+    # Fetch prices from other websites
+    for website, xpath_expression in other_websites.items():
+        try:
+            r = requests.get(website)
+            r.raise_for_status()  # Raise an exception if the request fails
+
+            # Check if the response status code is 503 (Service Unavailable)
+            if r.status_code == 503:
+                print(f"Failed to fetch price from {website}: Service Unavailable (503 Error)")
+                continue
+
+            soup = BeautifulSoup(r.content, 'html.parser')  # Use 'html.parser' instead of 'html5lib'
+            price_element = soup.select_one(xpath_expression)
+            if price_element:
+                price = price_element.text.strip()
+                # Assuming the price is in the format "Rs. 123,456" or similar
+                price_without_Rs = price.split()[-1].replace(",", "")
+                float_price = float(price_without_Rs)
+                price_comparison[website] = float_price
+            else:
+                print(f"Failed to fetch price from {website}: Price element not found.")
+        except requests.exceptions.RequestException as e:
+            print(f"Failed to fetch price from {website}: {e}")
+        except Exception as e:
+            print(f"Error while fetching price from {website}: {e}")
+
+    return price_comparison
+
+
+
+
+
 def main():
     print("Welcome to the Flipkart Product Price Tracker!")
     
     # Get user input for product URL and target price
     product_url, target_price = get_user_input()
 
+    # Ask user for other websites' price comparison
+    compare_choice = input("Do you want to compare prices on other websites? (y/n): ").lower()
+    if compare_choice == 'y':
+        other_websites = {}
+        while True:
+            website_url = input("Enter the website URL to compare price (or 'done' to finish): ").strip()
+            if website_url.lower() == 'done':
+                break
+            price_tag = input("Enter the HTML tag for the price (e.g., 'div', 'span', etc.): ").strip()
+            other_websites[website_url] = price_tag
+
+        if other_websites:
+            print("Comparing prices on other websites...")
+            price_comparison = compare_prices(product_url, other_websites)
+            print("\nPrice Comparison Results:")
+            for website, price in price_comparison.items():
+                print(f"{website}: {price} INR")
+
     print("Plotting the price graph (refreshes every 30 seconds)...")
 
     # Create a figure and use FuncAnimation to continuously update the graph
     plt.figure(figsize=(10, 6))
-    ani = FuncAnimation(plt.gcf(), update_graph, fargs=(product_url,target_price), interval=30000, save_count=None)  # 30 seconds in milliseconds
+    ani = FuncAnimation(plt.gcf(), update_graph, fargs=(product_url,target_price), interval=3000)  # 3 seconds in milliseconds
     plt.show()
+
+    
 
 if __name__ == "__main__":
     main()
