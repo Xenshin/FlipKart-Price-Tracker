@@ -10,6 +10,16 @@ gmail_user = "maryan.tiwari12345@gmail.com"
 gmail_password = "xbkpbhnvuajyysmr"
 
 
+# Log file name and path
+log_file = "price_history_log.txt"
+
+
+def log_price(price):
+    # Get the current date and time
+    current_time = time.strftime('%Y-%m-%d %H:%M:%S')
+    # Open the log file in append mode and write the price and timestamp
+    with open(log_file, 'a') as file:
+        file.write(f"{current_time} - {price}\n")
 
 
 
@@ -70,6 +80,7 @@ def track_product_price(product_url, target_price):
 
     while True:
         cur_price = check_price(product_url)
+        log_price(cur_price)  # Log the current price
         print(f"Current price is {cur_price}")
         if cur_price <= target_price:
             print(f"It's time to buy the product! The current price is {cur_price}.")
