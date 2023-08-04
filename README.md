@@ -146,17 +146,22 @@ if __name__ == "__main__":
 
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/347555b9-0d0a-43d3-bc8b-ac9697e3893a/Untitled.png)
+![1 ) welcome](https://github.com/Xenshin/flipkart-price-tracker/assets/96466881/ffb52148-76e6-40e9-9cde-3063852a022f)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/974e2c74-de5e-4958-9d93-89bda0b8fc32/Untitled.png)
+
+
+![2](https://github.com/Xenshin/flipkart-price-tracker/assets/96466881/5fb85095-9416-4e3f-8917-665ed553ec30)
+
 
 ### **ENTER THE TARGET PRICE:**
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/64867adc-fc60-4d97-afad-a9db1ef0c4c2/Untitled.png)
+![3) enter the target price](https://github.com/Xenshin/flipkart-price-tracker/assets/96466881/05c5af4b-6ee1-4c9b-9784-ccfc13891f16)
+
 
 ### **FINAL OUTPUT**
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/24f8fa84-4123-4bae-863d-ff99ed5e6534/Untitled.png)
+![4) final output](https://github.com/Xenshin/flipkart-price-tracker/assets/96466881/2c1b9fd4-74a3-432b-a967-00535bde208a)
+
 
 ---
 
@@ -246,9 +251,11 @@ if __name__ == "__main__":
     main()
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f9eb9202-7560-47b6-b76e-470071dcfc7c/Untitled.png)
+![5) email sent](https://github.com/Xenshin/flipkart-price-tracker/assets/96466881/69ccb757-e093-49b3-80a8-7185ba0bd6dc)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/da152794-6a93-4da6-a7b4-5bd4cf42e1c0/Untitled.png)
+
+![6) mail ss](https://github.com/Xenshin/flipkart-price-tracker/assets/96466881/bb58a42b-98c6-479d-bd2e-c9753a8bfb95)
+
 
 # Fourth Draft
 
@@ -345,7 +352,8 @@ if __name__ == "__main__":
     main()
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4cd957f6-ec29-443e-a972-6a8ed13afb3b/Untitled.png)
+![7) log file ss](https://github.com/Xenshin/flipkart-price-tracker/assets/96466881/c0c91bd8-d56f-4b87-b980-f2d1d4376a43)
+
 
 # Fifth Draft
 
@@ -475,4 +483,5 @@ if __name__ == "__main__":
     main()
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/83fcbdac-57de-46b5-b602-99fab72ff6c8/Untitled.png)
+![8) price history plot](https://github.com/Xenshin/flipkart-price-tracker/assets/96466881/0613483b-ad6b-4ebb-98d8-3766e943f0b1)
+
