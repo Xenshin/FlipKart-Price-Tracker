@@ -9,8 +9,8 @@ from datetime import datetime
 
 
 # Gmail account details for sending email notification
-gmail_user = "maryan.tiwari12345@gmail.com"
-gmail_password = "xbkpbhnvuajyysmr"
+gmail_user = "something@example.com"
+gmail_password = "xxxx-xxxx-xxxx-xxxx"
 
 
 # Log file name and path
